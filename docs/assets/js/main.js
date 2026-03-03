@@ -18,6 +18,20 @@ const TOPICS = [
     url: 'topics/music-production-bitwig/',
     color: 'linear-gradient(135deg, #6c5ce7, #fd79a8)'
   }
+  ,
+  {
+    id: 'james-talarico-senate',
+    title: 'James Talarico: Can He Win the Texas Senate?',
+    description: 'TX State Rep. James Talarico (D) is running for U.S. Senate. Democratic primary is March 3, 2026 vs Jasmine Crockett. Polls, analysis, YouTube coverage, and AI-generated artifacts.',
+    icon: '🗳️',
+    status: 'Active',
+    tags: ['politics', 'texas', 'senate-2026', 'democratic-primary', 'election'],
+    artifacts: 9,
+    sources: 10,
+    lastUpdated: '2026-03-03',
+    url: 'topics/james-talarico-senate/',
+    color: 'linear-gradient(135deg, #6c5ce7, #00cec9)'
+  }
   // Add more topics here following this format
 ];
 

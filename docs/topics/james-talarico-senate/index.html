@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Talarico — Texas Senate Race 2026 — God Mode</title>
+    <meta name="description"
+        content="Research hub: Can James Talarico win the 2026 Texas U.S. Senate race? Polls, analysis, YouTube coverage, and NotebookLM artifacts.">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗳️</text></svg>">
+    <style>
+        .topic-hero {
+            padding-top: 120px;
+            padding-bottom: 40px;
+        }
+
+        .topic-hero-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .breadcrumb a {
+            color: var(--accent-2);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Poll Bars */
+        .poll-card {
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .poll-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .poll-source {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .poll-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .poll-bar-wrap {
+            margin-bottom: 12px;
+        }
+
+        .poll-bar-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        .poll-bar-label .name {
+            font-weight: 600;
+        }
+
+        .poll-bar-label .pct {
+            font-weight: 700;
+            font-family: var(--font-mono);
+        }
+
+        .poll-bar-track {
+            height: 8px;
+            background: var(--bg-glass);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .poll-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .poll-bar-fill.talarico {
+            background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+        }
+
+        .poll-bar-fill.crockett {
+            background: linear-gradient(90deg, #fd79a8, #e84393);
+        }
+
+        /* Key Facts */
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .fact-card {
+            padding: 24px;
+        }
+
+        .fact-card-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .fact-card h4 {
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .fact-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-glass);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -28px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-1);
+            border: 2px solid var(--bg-primary);
+        }
+
+        .timeline-dot.active {
+            background: var(--accent-4);
+            box-shadow: 0 0 8px var(--accent-4);
+        }
+
+        .timeline-date {
+            font-size: 0.75rem;
+            color: var(--accent-2);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* YouTube */
+        .yt-results {
+            display: grid;
+            gap: 12px;
+        }
+
+        .yt-result {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        .yt-result-thumb {
+            width: 180px;
+            height: 101px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-secondary);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .yt-result-info h4 {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .yt-result-info p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* NLM Artifacts */
+        .nlm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .nlm-card {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .nlm-card .nlm-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .nlm-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .nlm-card .nlm-status {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nlm-card .nlm-status.pending {
+            color: var(--accent-5);
+        }
+
+        /* Verdict Banner */
+        .verdict-banner {
+            padding: 32px;
+            text-align: center;
+            margin-bottom: 48px;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(0, 206, 201, 0.1));
+            border: 1px solid rgba(108, 92, 231, 0.3);
+        }
+
+        .verdict-banner h2 {
+            margin-bottom: 12px;
+        }
+
+        .verdict-banner .verdict-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .yt-result {
+                flex-direction: column;
+            }
+
+            .yt-result-thumb {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16/9;
+            }
+
+            .facts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nlm-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-mesh"></div>
+
+    <nav class="nav">
+        <div class="container">
+            <a href="../../" class="nav-logo"><span class="icon">⚡</span><span>God Mode</span></a>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="#polls">Polls</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#artifacts">Artifacts</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="topic-hero container">
+        <div class="breadcrumb">
+            <a href="../../">⚡ God Mode</a><span>›</span><span>Topics</span><span>›</span><span>Texas Senate 2026</span>
+        </div>
+        <span class="topic-hero-icon">🗳️</span>
+        <h1>James Talarico: <span class="gradient-text">Can He Win?</span></h1>
+        <p class="hero-subtitle" style="text-align: left; margin-top: 16px;">
+            Texas State Rep. James Talarico (D-District 50) is running for U.S. Senate in Texas. The Democratic primary
+            is <strong>today, March 3, 2026</strong>, with his main opponent Rep. Jasmine Crockett. Polls show a tight
+            race with Talarico holding a narrow lead.
+        </p>
+        <div class="tags-bar" style="justify-content: flex-start; margin-top: 24px;">
+            <span class="tag active">politics</span>
+            <span class="tag">texas</span>
+            <span class="tag">senate-2026</span>
+            <span class="tag">democratic-primary</span>
+            <span class="tag">election</span>
+        </div>
+    </section>
+
+    <!-- Verdict -->
+    <section class="container" style="padding-bottom: 40px;">
+        <div class="verdict-banner glass-card">
+            <h2>📊 The Bottom Line</h2>
+            <p class="verdict-text">
+                Polls lean Talarico. YouGov (Mar 2): <strong>53% vs 40%</strong>. Emerson (Mar 1): <strong>52% vs
+                    47%</strong> (within MOE). He leads among Hispanic, white, and younger voters. Crockett dominates
+                Black voters (80-84%). <strong>Primary results tonight after 7 PM CT.</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- Polls -->
+    <section class="section container" id="polls">
+        <h2 style="margin-bottom: 8px;">Latest Polls</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 32px;">Democratic primary polling heading into March 3,
+            2026</p>
+
+        <div class="poll-card glass-card">
+            <div class="poll-header">
+                <span class="poll-source">YouGov Poll</span>
+                <span class="poll-date">March 2, 2026</span>
+            </div>
+            <div class="poll-bar-wrap">
+                <div class="poll-bar-label">
+                    <span class="name">James Talarico</span>
+                    <span class="pct" style="color: var(--accent-2);">53%</span>
+                </div>
+                <div class="poll-bar-track">
+                    <div class="poll-bar-fill talarico" style="width: 53%;"></div>
+                </div>
+            </div>
+            <div class="poll-bar-wrap">
+                <div class="poll-bar-label">
+                    <span class="name">Jasmine Crockett</span>
+                    <span class="pct" style="color: var(--accent-3);">40%</span>
+                </div>
+                <div class="poll-bar-track">
+                    <div class="poll-bar-fill crockett" style="width: 40%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="poll-card glass-card">
+            <div class="poll-header">
+                <span class="poll-source">Emerson College / Nexstar Media</span>
+                <span class="poll-date">March 1, 2026</span>
+            </div>
+            <div class="poll-bar-wrap">
+                <div class="poll-bar-label">
+                    <span class="name">James Talarico</span>
+                    <span class="pct" style="color: var(--accent-2);">52%</span>
+                </div>
+                <div class="poll-bar-track">
+                    <div class="poll-bar-fill talarico" style="width: 52%;"></div>
+                </div>
+            </div>
+            <div class="poll-bar-wrap">
+                <div class="poll-bar-label">
+                    <span class="name">Jasmine Crockett</span>
+                    <span class="pct" style="color: var(--accent-3);">47%</span>
+                </div>
+                <div class="poll-bar-track">
+                    <div class="poll-bar-fill crockett" style="width: 47%;"></div>
+                </div>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 12px;">⚠️ Within margin of error</p>
+        </div>
+
+        <div class="poll-card glass-card">
+            <div class="poll-header">
+                <span class="poll-source">Emerson College / Nexstar Media</span>
+                <span class="poll-date">January 2026</span>
+            </div>
+            <div class="poll-bar-wrap">
+                <div class="poll-bar-label">
+                    <span class="name">James Talarico</span>
+                    <span class="pct" style="color: var(--accent-2);">47%</span>
+                </div>
+                <div class="poll-bar-track">
+                    <div class="poll-bar-fill talarico" style="width: 47%;"></div>
+                </div>
+            </div>
+            <div class="poll-bar-wrap">
+                <div class="poll-bar-label">
+                    <span class="name">Jasmine Crockett</span>
+                    <span class="pct" style="color: var(--accent-3);">38%</span>
+                </div>
+                <div class="poll-bar-track">
+                    <div class="poll-bar-fill crockett" style="width: 38%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="poll-card glass-card">
+            <div class="poll-header">
+                <span class="poll-source">UT Texas Politics Project</span>
+                <span class="poll-date">Late February 2026</span>
+            </div>
+            <div class="poll-bar-wrap">
+                <div class="poll-bar-label">
+                    <span class="name">James Talarico</span>
+                    <span class="pct" style="color: var(--accent-2);">~35%</span>
+                </div>
+                <div class="poll-bar-track">
+                    <div class="poll-bar-fill talarico" style="width: 35%;"></div>
+                </div>
+            </div>
+            <div class="poll-bar-wrap">
+                <div class="poll-bar-label">
+                    <span class="name">Jasmine Crockett</span>
+                    <span class="pct" style="color: var(--accent-3);">~48%</span>
+                </div>
+                <div class="poll-bar-track">
+                    <div class="poll-bar-fill crockett" style="width: 48%;"></div>
+                </div>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 12px;">📌 Outlier — Crockett leads by
+                double digits in this poll</p>
+        </div>
+    </section>
+
+    <!-- Key Facts -->
+    <section class="section container">
+        <h2 style="margin-bottom: 8px;">Key Facts</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 32px;">What you need to know about James Talarico</p>
+        <div class="facts-grid">
+            <div class="fact-card glass-card">
+                <div class="fact-card-icon">🏛️</div>
+                <h4>Texas House Rep, District 50</h4>
+                <p>Currently serving in the Texas Legislature. Former public school teacher turned politician.</p>
+            </div>
+            <div class="fact-card glass-card">
+                <div class="fact-card-icon">🎓</div>
+                <h4>Former Teacher</h4>
+                <p>Background in education shapes his policy focus on affordability and working families.</p>
+            </div>
+            <div class="fact-card glass-card">
+                <div class="fact-card-icon">💰</div>
+                <h4>Economic Platform</h4>
+                <p>Focuses on lowering cost of housing, childcare, and prescription drugs. Anti-billionaire messaging.
+                </p>
+            </div>
+            <div class="fact-card glass-card">
+                <div class="fact-card-icon">📺</div>
+                <h4>Colbert Controversy</h4>
+                <p>National attention after a canceled "Late Show" interview with Stephen Colbert became a major story.
+                </p>
+            </div>
+            <div class="fact-card glass-card">
+                <div class="fact-card-icon">🗳️</div>
+                <h4>Strong Early Voting</h4>
+                <p>Emerson poll shows 58% to 41% lead among early voters — a significant advantage heading in.</p>
+            </div>
+            <div class="fact-card glass-card">
+                <div class="fact-card-icon">🤝</div>
+                <h4>Coalition</h4>
+                <p>Leads among Hispanic (60%), white (69-71%), and young voters (18-29: 60%). Crockett leads Black
+                    voters (80-84%).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section container">
+        <h2 style="margin-bottom: 32px;">Race Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">September 2025</div>
+                <div class="timeline-content">Talarico announces candidacy for U.S. Senate</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">January 2026</div>
+                <div class="timeline-content">Emerson poll: Talarico 47%, Crockett 38%</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Late February 2026</div>
+                <div class="timeline-content">UT poll shows Crockett leading (outlier); Colbert interview controversy
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">March 1, 2026</div>
+                <div class="timeline-content">Emerson poll: Talarico 52%, Crockett 47% (within MOE)</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">March 2, 2026</div>
+                <div class="timeline-content">YouGov poll: Talarico 53%, Crockett 40% among likely voters</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot active"></div>
+                <div class="timeline-date">March 3, 2026 — TODAY</div>
+                <div class="timeline-content"><strong>Primary Election Day.</strong> Results expected after 7 PM CT. If
+                    no candidate gets 50%+, runoff on May 26.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NotebookLM Artifacts -->
+    <section class="section container" id="artifacts">
+        <h2 style="margin-bottom: 8px;">NotebookLM Artifacts</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 32px;">AI-generated analysis and learning materials</p>
+        <div class="nlm-grid">
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">🎙️</div>
+                <h4>Audio Overview</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">🎬</div>
+                <h4>Video Overview</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">🧠</div>
+                <h4>Mind Map</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">📝</div>
+                <h4>Report</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">🃏</div>
+                <h4>Flashcards</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">❓</div>
+                <h4>Quiz</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">📊</div>
+                <h4>Infographic</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">📑</div>
+                <h4>Slide Deck</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">📋</div>
+                <h4>Data Table</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Videos -->
+    <section class="section container" id="videos">
+        <h2 style="margin-bottom: 8px;">YouTube Coverage</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 32px;">10 videos found via yt-dlp — interviews, rallies,
+            and analysis</p>
+        <div class="yt-results">
+            <a href="https://www.youtube.com/watch?v=z0LLq6uBPYA" target="_blank" class="yt-result glass-card"
+                style="text-decoration: none;">
+                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/z0LLq6uBPYA/mqdefault.jpg" alt=""
+                    loading="lazy">
+                <div class="yt-result-info">
+                    <h4>James Talarico on his economic message, Jasmine Crockett and more</h4>
+                    <p>CBS News • 8:00</p>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=IGwDNWCkQuY" target="_blank" class="yt-result glass-card"
+                style="text-decoration: none;">
+                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/IGwDNWCkQuY/mqdefault.jpg" alt=""
+                    loading="lazy">
+                <div class="yt-result-info">
+                    <h4>Texas Democratic Senate Candidate James Talarico Slams Billionaires at San Antonio Rally</h4>
+                    <p>Forbes Breaking News • 24:28</p>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=C_KV-JYGDCo" target="_blank" class="yt-result glass-card"
+                style="text-decoration: none;">
+                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/C_KV-JYGDCo/mqdefault.jpg" alt=""
+                    loading="lazy">
+                <div class="yt-result-info">
+                    <h4>Jasmine Crockett and James Talarico have different styles to win the Texas Senate primary</h4>
+                    <p>CBS TEXAS • 3:50</p>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=oiTJ7Pz_59A" target="_blank" class="yt-result glass-card"
+                style="text-decoration: none;">
+                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/oiTJ7Pz_59A/mqdefault.jpg" alt=""
+                    loading="lazy">
+                <div class="yt-result-info">
+                    <h4>Rep. James Talarico On Confronting Christian Nationalism</h4>
+                    <p>The Late Show with Stephen Colbert • 14:56</p>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=1yQqRGDqjYM" target="_blank" class="yt-result glass-card"
+                style="text-decoration: none;">
+                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/1yQqRGDqjYM/mqdefault.jpg" alt=""
+                    loading="lazy">
+                <div class="yt-result-info">
+                    <h4>James Talarico vs 20 Undecided Texas voters | Surrounded</h4>
+                    <p>Jubilee • 1:37:44</p>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=ONhfOqHdXlo" target="_blank" class="yt-result glass-card"
+                style="text-decoration: none;">
+                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/ONhfOqHdXlo/mqdefault.jpg" alt=""
+                    loading="lazy">
+                <div class="yt-result-info">
+                    <h4>Jasmine Crockett and James Talarico react to controversy over Colbert interview</h4>
+                    <p>CBS TEXAS • 6:40</p>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=l-yT7SJq07E" target="_blank" class="yt-result glass-card"
+                style="text-decoration: none;">
+                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/l-yT7SJq07E/mqdefault.jpg" alt=""
+                    loading="lazy">
+                <div class="yt-result-info">
+                    <h4>James Talarico on his affordability platform, Jasmine Crockett</h4>
+                    <p>Face the Nation • 8:00</p>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=FHwmGdPE9HQ" target="_blank" class="yt-result glass-card"
+                style="text-decoration: none;">
+                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/FHwmGdPE9HQ/mqdefault.jpg" alt=""
+                    loading="lazy">
+                <div class="yt-result-info">
+                    <h4>James Talarico Campaigns for U.S. Senate in Austin, Texas</h4>
+                    <p>C-SPAN • 21:46</p>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=qFQyMkvEKa0" target="_blank" class="yt-result glass-card"
+                style="text-decoration: none;">
+                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/qFQyMkvEKa0/mqdefault.jpg" alt=""
+                    loading="lazy">
+                <div class="yt-result-info">
+                    <h4>Steven Colbert interview with James Talarico draws national attention</h4>
+                    <p>CBS TEXAS • 4:27</p>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=YRkonQkHXWI" target="_blank" class="yt-result glass-card"
+                style="text-decoration: none;">
+                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/YRkonQkHXWI/mqdefault.jpg" alt=""
+                    loading="lazy">
+                <div class="yt-result-info">
+                    <h4>New poll shows Talarico leading Crockett in Texas senate primary</h4>
+                    <p>FOX 4 Dallas-Fort Worth • 2:47</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p><a href="../../">⚡ God Mode</a> • James Talarico — Texas Senate 2026 • <a
+                    href="https://github.com/bedwards/god-mode" target="_blank">GitHub</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>
