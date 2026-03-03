@@ -40,6 +40,51 @@
             text-decoration: underline;
         }
 
+        /* Artifact Tabs */
+        .artifact-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 24px;
+            padding: 4px;
+            background: var(--bg-glass);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-glass);
+        }
+
+        .artifact-tab {
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: none;
+            background: none;
+            font-family: var(--font-body);
+            white-space: nowrap;
+        }
+
+        .artifact-tab:hover {
+            color: var(--text-primary);
+            background: var(--bg-glass-hover);
+        }
+
+        .artifact-tab.active {
+            color: white;
+            background: var(--accent-1);
+        }
+
+        .artifact-panel {
+            display: none;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        .artifact-panel.active {
+            display: block;
+        }
+
         /* Poll Bars */
         .poll-card {
             padding: 24px;
@@ -103,6 +148,316 @@
 
         .poll-bar-fill.crockett {
             background: linear-gradient(90deg, #fd79a8, #e84393);
+        }
+
+        /* Flashcard */
+        .flashcard-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 24px 0;
+        }
+
+        .flashcard {
+            width: 500px;
+            max-width: 100%;
+            height: 260px;
+            perspective: 600px;
+            cursor: pointer;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front,
+        .flashcard-back {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            text-align: center;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .flashcard-front {
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(0, 206, 201, 0.1));
+            border: 1px solid rgba(108, 92, 231, 0.3);
+            color: var(--text-primary);
+        }
+
+        .flashcard-back {
+            background: linear-gradient(135deg, rgba(0, 206, 201, 0.2), rgba(108, 92, 231, 0.1));
+            border: 1px solid rgba(0, 206, 201, 0.3);
+            color: var(--text-primary);
+            transform: rotateY(180deg);
+            font-weight: 600;
+        }
+
+        .fc-nav {
+            background: none;
+            border: 1px solid var(--border-glass);
+            color: var(--text-primary);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all var(--transition-fast);
+            flex-shrink: 0;
+        }
+
+        .fc-nav:hover {
+            background: var(--bg-glass-hover);
+        }
+
+        .fc-counter {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 12px;
+        }
+
+        /* Report */
+        .report-content {
+            padding: 32px;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .report-content h1 {
+            font-size: 1.4rem;
+            margin-bottom: 24px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .report-content h2 {
+            font-size: 1.15rem;
+            margin: 24px 0 12px;
+            color: var(--accent-2);
+        }
+
+        .report-content h3 {
+            font-size: 1rem;
+            margin: 16px 0 8px;
+            color: var(--text-primary);
+        }
+
+        .report-content p {
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .report-content ul {
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .report-content li {
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .report-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.85rem;
+        }
+
+        .report-content th {
+            text-align: left;
+            padding: 10px 12px;
+            background: var(--bg-glass);
+            color: var(--text-primary);
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .report-content td {
+            padding: 8px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+
+        .report-content hr {
+            border: none;
+            border-top: 1px solid var(--border-glass);
+            margin: 24px 0;
+        }
+
+        .report-content strong {
+            color: var(--text-primary);
+        }
+
+        /* Mind Map */
+        .mindmap-container {
+            padding: 24px;
+        }
+
+        .mm-node {
+            margin-bottom: 8px;
+        }
+
+        .mm-root {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(0, 206, 201, 0.1));
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(108, 92, 231, 0.3);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .mm-branch {
+            margin-left: 0;
+            margin-bottom: 16px;
+        }
+
+        .mm-branch-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--accent-2);
+            padding: 10px 16px;
+            background: var(--bg-glass);
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--border-glass);
+        }
+
+        .mm-branch-title:hover {
+            background: var(--bg-glass-hover);
+        }
+
+        .mm-branch-title .arrow {
+            transition: transform 0.2s;
+        }
+
+        .mm-branch.collapsed .mm-leaves {
+            display: none;
+        }
+
+        .mm-branch.collapsed .arrow {
+            transform: rotate(-90deg);
+        }
+
+        .mm-leaves {
+            padding-left: 20px;
+        }
+
+        .mm-leaf {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-left: 2px solid var(--border-glass);
+            margin-bottom: 4px;
+        }
+
+        .mm-subbranch {
+            margin-left: 20px;
+            margin-top: 4px;
+        }
+
+        .mm-subbranch-title {
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--accent-4);
+            padding: 4px 8px;
+            margin-bottom: 2px;
+        }
+
+        /* Data Table */
+        .data-table-wrap {
+            overflow-x: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 16px;
+            background: var(--bg-glass);
+            color: var(--text-primary);
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-glass);
+            position: sticky;
+            top: 0;
+        }
+
+        .data-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:hover td {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* YouTube */
+        .yt-results {
+            display: grid;
+            gap: 12px;
+        }
+
+        .yt-result {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        .yt-result-thumb {
+            width: 180px;
+            height: 101px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-secondary);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .yt-result-info h4 {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .yt-result-info p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
         }
 
         /* Key Facts */
@@ -181,75 +536,7 @@
             color: var(--text-secondary);
         }
 
-        /* YouTube */
-        .yt-results {
-            display: grid;
-            gap: 12px;
-        }
-
-        .yt-result {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 16px;
-            text-decoration: none;
-        }
-
-        .yt-result-thumb {
-            width: 180px;
-            height: 101px;
-            border-radius: var(--radius-sm);
-            background: var(--bg-secondary);
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .yt-result-info h4 {
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            margin-bottom: 4px;
-            line-height: 1.3;
-        }
-
-        .yt-result-info p {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-
-        /* NLM Artifacts */
-        .nlm-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 12px;
-        }
-
-        .nlm-card {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .nlm-card .nlm-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-
-        .nlm-card h4 {
-            font-size: 0.9rem;
-            margin-bottom: 4px;
-        }
-
-        .nlm-card .nlm-status {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .nlm-card .nlm-status.pending {
-            color: var(--accent-5);
-        }
-
-        /* Verdict Banner */
+        /* Verdict */
         .verdict-banner {
             padding: 32px;
             text-align: center;
@@ -284,8 +571,18 @@
                 grid-template-columns: 1fr;
             }
 
-            .nlm-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .flashcard {
+                width: 100%;
+                height: 220px;
+            }
+
+            .artifact-tabs {
+                gap: 2px;
+            }
+
+            .artifact-tab {
+                padding: 8px 10px;
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -300,8 +597,8 @@
             <ul class="nav-links">
                 <li><a href="../../">Home</a></li>
                 <li><a href="#polls">Polls</a></li>
-                <li><a href="#videos">Videos</a></li>
                 <li><a href="#artifacts">Artifacts</a></li>
+                <li><a href="#videos">Videos</a></li>
             </ul>
         </div>
     </nav>
@@ -344,115 +641,193 @@
         <h2 style="margin-bottom: 8px;">Latest Polls</h2>
         <p style="color: var(--text-secondary); margin-bottom: 32px;">Democratic primary polling heading into March 3,
             2026</p>
-
         <div class="poll-card glass-card">
-            <div class="poll-header">
-                <span class="poll-source">YouGov Poll</span>
-                <span class="poll-date">March 2, 2026</span>
-            </div>
+            <div class="poll-header"><span class="poll-source">YouGov Poll</span><span class="poll-date">March 2,
+                    2026</span></div>
             <div class="poll-bar-wrap">
-                <div class="poll-bar-label">
-                    <span class="name">James Talarico</span>
-                    <span class="pct" style="color: var(--accent-2);">53%</span>
-                </div>
+                <div class="poll-bar-label"><span class="name">James Talarico</span><span class="pct"
+                        style="color: var(--accent-2);">53%</span></div>
                 <div class="poll-bar-track">
                     <div class="poll-bar-fill talarico" style="width: 53%;"></div>
                 </div>
             </div>
             <div class="poll-bar-wrap">
-                <div class="poll-bar-label">
-                    <span class="name">Jasmine Crockett</span>
-                    <span class="pct" style="color: var(--accent-3);">40%</span>
-                </div>
+                <div class="poll-bar-label"><span class="name">Jasmine Crockett</span><span class="pct"
+                        style="color: var(--accent-3);">40%</span></div>
                 <div class="poll-bar-track">
                     <div class="poll-bar-fill crockett" style="width: 40%;"></div>
                 </div>
             </div>
         </div>
-
         <div class="poll-card glass-card">
-            <div class="poll-header">
-                <span class="poll-source">Emerson College / Nexstar Media</span>
-                <span class="poll-date">March 1, 2026</span>
-            </div>
+            <div class="poll-header"><span class="poll-source">Emerson College / Nexstar Media</span><span
+                    class="poll-date">March 1, 2026</span></div>
             <div class="poll-bar-wrap">
-                <div class="poll-bar-label">
-                    <span class="name">James Talarico</span>
-                    <span class="pct" style="color: var(--accent-2);">52%</span>
-                </div>
+                <div class="poll-bar-label"><span class="name">James Talarico</span><span class="pct"
+                        style="color: var(--accent-2);">52%</span></div>
                 <div class="poll-bar-track">
                     <div class="poll-bar-fill talarico" style="width: 52%;"></div>
                 </div>
             </div>
             <div class="poll-bar-wrap">
-                <div class="poll-bar-label">
-                    <span class="name">Jasmine Crockett</span>
-                    <span class="pct" style="color: var(--accent-3);">47%</span>
-                </div>
+                <div class="poll-bar-label"><span class="name">Jasmine Crockett</span><span class="pct"
+                        style="color: var(--accent-3);">47%</span></div>
                 <div class="poll-bar-track">
                     <div class="poll-bar-fill crockett" style="width: 47%;"></div>
                 </div>
             </div>
             <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 12px;">⚠️ Within margin of error</p>
         </div>
-
         <div class="poll-card glass-card">
-            <div class="poll-header">
-                <span class="poll-source">Emerson College / Nexstar Media</span>
-                <span class="poll-date">January 2026</span>
-            </div>
+            <div class="poll-header"><span class="poll-source">Emerson College / Nexstar Media</span><span
+                    class="poll-date">January 2026</span></div>
             <div class="poll-bar-wrap">
-                <div class="poll-bar-label">
-                    <span class="name">James Talarico</span>
-                    <span class="pct" style="color: var(--accent-2);">47%</span>
-                </div>
+                <div class="poll-bar-label"><span class="name">James Talarico</span><span class="pct"
+                        style="color: var(--accent-2);">47%</span></div>
                 <div class="poll-bar-track">
                     <div class="poll-bar-fill talarico" style="width: 47%;"></div>
                 </div>
             </div>
             <div class="poll-bar-wrap">
-                <div class="poll-bar-label">
-                    <span class="name">Jasmine Crockett</span>
-                    <span class="pct" style="color: var(--accent-3);">38%</span>
-                </div>
+                <div class="poll-bar-label"><span class="name">Jasmine Crockett</span><span class="pct"
+                        style="color: var(--accent-3);">38%</span></div>
                 <div class="poll-bar-track">
                     <div class="poll-bar-fill crockett" style="width: 38%;"></div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="poll-card glass-card">
-            <div class="poll-header">
-                <span class="poll-source">UT Texas Politics Project</span>
-                <span class="poll-date">Late February 2026</span>
+    <!-- NLM Artifacts -->
+    <section class="section container" id="artifacts">
+        <h2 style="margin-bottom: 8px;">📓 NotebookLM Artifacts</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 24px;">AI-generated analysis from real NotebookLM —
+            interactive content below</p>
+        <div class="artifact-tabs" id="artifactTabs">
+            <button class="artifact-tab active" data-tab="report">📝 Report</button>
+            <button class="artifact-tab" data-tab="flashcards">🃏 Flashcards</button>
+            <button class="artifact-tab" data-tab="mindmap">🧠 Mind Map</button>
+            <button class="artifact-tab" data-tab="datatable">📋 Data Table</button>
+            <button class="artifact-tab" data-tab="audio">🎙️ Audio</button>
+            <button class="artifact-tab" data-tab="slides">📑 Slides</button>
+            <button class="artifact-tab" data-tab="infographic">📊 Infographic</button>
+        </div>
+
+        <!-- Report Panel -->
+        <div class="artifact-panel active" id="panel-report">
+            <div class="glass-card report-content" id="reportContent">
+                <!-- Rendered from NLM download -->
             </div>
-            <div class="poll-bar-wrap">
-                <div class="poll-bar-label">
-                    <span class="name">James Talarico</span>
-                    <span class="pct" style="color: var(--accent-2);">~35%</span>
+        </div>
+
+        <!-- Flashcards Panel -->
+        <div class="artifact-panel" id="panel-flashcards">
+            <div class="glass-card" style="padding: 24px;">
+                <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">Click
+                    card to flip • Use ← → arrows to navigate</p>
+                <div class="flashcard-container">
+                    <button class="fc-nav" id="fcPrev">←</button>
+                    <div class="flashcard" id="flashcard">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front" id="fcFront"></div>
+                            <div class="flashcard-back" id="fcBack"></div>
+                        </div>
+                    </div>
+                    <button class="fc-nav" id="fcNext">→</button>
                 </div>
-                <div class="poll-bar-track">
-                    <div class="poll-bar-fill talarico" style="width: 35%;"></div>
+                <div class="fc-counter" id="fcCounter"></div>
+            </div>
+        </div>
+
+        <!-- Mind Map Panel -->
+        <div class="artifact-panel" id="panel-mindmap">
+            <div class="glass-card mindmap-container" id="mindmapContainer"></div>
+        </div>
+
+        <!-- Data Table Panel -->
+        <div class="artifact-panel" id="panel-datatable">
+            <div class="glass-card" style="padding: 24px;">
+                <div class="data-table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Pollster</th>
+                                <th>Date</th>
+                                <th>Talarico</th>
+                                <th>Crockett</th>
+                                <th>Key Demographics</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>YouGov</td>
+                                <td>March 2, 2026</td>
+                                <td style="color: var(--accent-2); font-weight: 700;">53%</td>
+                                <td style="color: var(--accent-3); font-weight: 700;">40%</td>
+                                <td>Hispanic (59-60%), white (57-71%), young 18-29 (60%), early voters (58%)</td>
+                            </tr>
+                            <tr>
+                                <td>Emerson College</td>
+                                <td>March 1, 2026</td>
+                                <td style="color: var(--accent-2); font-weight: 700;">52%</td>
+                                <td style="color: var(--accent-3); font-weight: 700;">47%</td>
+                                <td>Within margin of error</td>
+                            </tr>
+                            <tr>
+                                <td>UT Texas Politics</td>
+                                <td>Late Feb 2026</td>
+                                <td style="color: var(--text-muted);">~35%</td>
+                                <td style="color: var(--accent-3); font-weight: 700;">~48%</td>
+                                <td>Outlier — Black voters (80-84%), seniors (65+)</td>
+                            </tr>
+                            <tr>
+                                <td>Emerson College</td>
+                                <td>January 2026</td>
+                                <td style="color: var(--accent-2); font-weight: 700;">47%</td>
+                                <td style="color: var(--accent-3); font-weight: 700;">38%</td>
+                                <td>Hispanic (59%), white (57%)</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class="poll-bar-wrap">
-                <div class="poll-bar-label">
-                    <span class="name">Jasmine Crockett</span>
-                    <span class="pct" style="color: var(--accent-3);">~48%</span>
-                </div>
-                <div class="poll-bar-track">
-                    <div class="poll-bar-fill crockett" style="width: 48%;"></div>
-                </div>
+        </div>
+
+        <!-- Audio Panel -->
+        <div class="artifact-panel" id="panel-audio">
+            <div class="glass-card" style="padding: 32px; text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 16px;">🎙️</div>
+                <h3>Audio Overview</h3>
+                <p style="color: var(--text-secondary); margin: 12px 0 24px;">AI-generated audio summary — generating
+                    now</p>
+                <div id="audioPlayer" style="color: var(--accent-5);">⏳ Audio generation in progress...</div>
             </div>
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 12px;">📌 Outlier — Crockett leads by
-                double digits in this poll</p>
+        </div>
+
+        <!-- Slides Panel -->
+        <div class="artifact-panel" id="panel-slides">
+            <div class="glass-card" style="padding: 32px; text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 16px;">📑</div>
+                <h3>Slide Deck</h3>
+                <p style="color: var(--text-secondary); margin: 12px 0 24px;">AI-generated presentation slides</p>
+                <div style="color: var(--accent-5);">⏳ Generation in progress...</div>
+            </div>
+        </div>
+
+        <!-- Infographic Panel -->
+        <div class="artifact-panel" id="panel-infographic">
+            <div class="glass-card" style="padding: 32px; text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 16px;">📊</div>
+                <h3>Infographic</h3>
+                <p style="color: var(--text-secondary); margin: 12px 0 24px;">AI-generated visual infographic</p>
+                <div style="color: var(--accent-5);">⏳ Generation in progress...</div>
+            </div>
         </div>
     </section>
 
     <!-- Key Facts -->
     <section class="section container">
-        <h2 style="margin-bottom: 8px;">Key Facts</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 32px;">What you need to know about James Talarico</p>
+        <h2 style="margin-bottom: 32px;">Key Facts</h2>
         <div class="facts-grid">
             <div class="fact-card glass-card">
                 <div class="fact-card-icon">🏛️</div>
@@ -529,59 +904,6 @@
         </div>
     </section>
 
-    <!-- NotebookLM Artifacts -->
-    <section class="section container" id="artifacts">
-        <h2 style="margin-bottom: 8px;">NotebookLM Artifacts</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 32px;">AI-generated analysis and learning materials</p>
-        <div class="nlm-grid">
-            <div class="nlm-card glass-card">
-                <div class="nlm-icon">🎙️</div>
-                <h4>Audio Overview</h4>
-                <div class="nlm-status pending">Pending Auth</div>
-            </div>
-            <div class="nlm-card glass-card">
-                <div class="nlm-icon">🎬</div>
-                <h4>Video Overview</h4>
-                <div class="nlm-status pending">Pending Auth</div>
-            </div>
-            <div class="nlm-card glass-card">
-                <div class="nlm-icon">🧠</div>
-                <h4>Mind Map</h4>
-                <div class="nlm-status pending">Pending Auth</div>
-            </div>
-            <div class="nlm-card glass-card">
-                <div class="nlm-icon">📝</div>
-                <h4>Report</h4>
-                <div class="nlm-status pending">Pending Auth</div>
-            </div>
-            <div class="nlm-card glass-card">
-                <div class="nlm-icon">🃏</div>
-                <h4>Flashcards</h4>
-                <div class="nlm-status pending">Pending Auth</div>
-            </div>
-            <div class="nlm-card glass-card">
-                <div class="nlm-icon">❓</div>
-                <h4>Quiz</h4>
-                <div class="nlm-status pending">Pending Auth</div>
-            </div>
-            <div class="nlm-card glass-card">
-                <div class="nlm-icon">📊</div>
-                <h4>Infographic</h4>
-                <div class="nlm-status pending">Pending Auth</div>
-            </div>
-            <div class="nlm-card glass-card">
-                <div class="nlm-icon">📑</div>
-                <h4>Slide Deck</h4>
-                <div class="nlm-status pending">Pending Auth</div>
-            </div>
-            <div class="nlm-card glass-card">
-                <div class="nlm-icon">📋</div>
-                <h4>Data Table</h4>
-                <div class="nlm-status pending">Pending Auth</div>
-            </div>
-        </div>
-    </section>
-
     <!-- YouTube Videos -->
     <section class="section container" id="videos">
         <h2 style="margin-bottom: 8px;">YouTube Coverage</h2>
@@ -589,90 +911,72 @@
             and analysis</p>
         <div class="yt-results">
             <a href="https://www.youtube.com/watch?v=z0LLq6uBPYA" target="_blank" class="yt-result glass-card"
-                style="text-decoration: none;">
-                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/z0LLq6uBPYA/mqdefault.jpg" alt=""
-                    loading="lazy">
+                style="text-decoration: none;"><img class="yt-result-thumb"
+                    src="https://i.ytimg.com/vi/z0LLq6uBPYA/mqdefault.jpg" alt="" loading="lazy">
                 <div class="yt-result-info">
                     <h4>James Talarico on his economic message, Jasmine Crockett and more</h4>
                     <p>CBS News • 8:00</p>
                 </div>
             </a>
             <a href="https://www.youtube.com/watch?v=IGwDNWCkQuY" target="_blank" class="yt-result glass-card"
-                style="text-decoration: none;">
-                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/IGwDNWCkQuY/mqdefault.jpg" alt=""
-                    loading="lazy">
+                style="text-decoration: none;"><img class="yt-result-thumb"
+                    src="https://i.ytimg.com/vi/IGwDNWCkQuY/mqdefault.jpg" alt="" loading="lazy">
                 <div class="yt-result-info">
-                    <h4>Texas Democratic Senate Candidate James Talarico Slams Billionaires at San Antonio Rally</h4>
+                    <h4>Texas Democratic Senate Candidate Slams Billionaires at San Antonio Rally</h4>
                     <p>Forbes Breaking News • 24:28</p>
                 </div>
             </a>
             <a href="https://www.youtube.com/watch?v=C_KV-JYGDCo" target="_blank" class="yt-result glass-card"
-                style="text-decoration: none;">
-                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/C_KV-JYGDCo/mqdefault.jpg" alt=""
-                    loading="lazy">
+                style="text-decoration: none;"><img class="yt-result-thumb"
+                    src="https://i.ytimg.com/vi/C_KV-JYGDCo/mqdefault.jpg" alt="" loading="lazy">
                 <div class="yt-result-info">
-                    <h4>Jasmine Crockett and James Talarico have different styles to win the Texas Senate primary</h4>
+                    <h4>Crockett and Talarico have different styles to win the primary</h4>
                     <p>CBS TEXAS • 3:50</p>
                 </div>
             </a>
             <a href="https://www.youtube.com/watch?v=oiTJ7Pz_59A" target="_blank" class="yt-result glass-card"
-                style="text-decoration: none;">
-                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/oiTJ7Pz_59A/mqdefault.jpg" alt=""
-                    loading="lazy">
+                style="text-decoration: none;"><img class="yt-result-thumb"
+                    src="https://i.ytimg.com/vi/oiTJ7Pz_59A/mqdefault.jpg" alt="" loading="lazy">
                 <div class="yt-result-info">
-                    <h4>Rep. James Talarico On Confronting Christian Nationalism</h4>
+                    <h4>Rep. Talarico On Confronting Christian Nationalism</h4>
                     <p>The Late Show with Stephen Colbert • 14:56</p>
                 </div>
             </a>
             <a href="https://www.youtube.com/watch?v=1yQqRGDqjYM" target="_blank" class="yt-result glass-card"
-                style="text-decoration: none;">
-                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/1yQqRGDqjYM/mqdefault.jpg" alt=""
-                    loading="lazy">
+                style="text-decoration: none;"><img class="yt-result-thumb"
+                    src="https://i.ytimg.com/vi/1yQqRGDqjYM/mqdefault.jpg" alt="" loading="lazy">
                 <div class="yt-result-info">
                     <h4>James Talarico vs 20 Undecided Texas voters | Surrounded</h4>
                     <p>Jubilee • 1:37:44</p>
                 </div>
             </a>
-            <a href="https://www.youtube.com/watch?v=ONhfOqHdXlo" target="_blank" class="yt-result glass-card"
-                style="text-decoration: none;">
-                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/ONhfOqHdXlo/mqdefault.jpg" alt=""
-                    loading="lazy">
-                <div class="yt-result-info">
-                    <h4>Jasmine Crockett and James Talarico react to controversy over Colbert interview</h4>
-                    <p>CBS TEXAS • 6:40</p>
-                </div>
-            </a>
             <a href="https://www.youtube.com/watch?v=l-yT7SJq07E" target="_blank" class="yt-result glass-card"
-                style="text-decoration: none;">
-                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/l-yT7SJq07E/mqdefault.jpg" alt=""
-                    loading="lazy">
+                style="text-decoration: none;"><img class="yt-result-thumb"
+                    src="https://i.ytimg.com/vi/l-yT7SJq07E/mqdefault.jpg" alt="" loading="lazy">
                 <div class="yt-result-info">
-                    <h4>James Talarico on his affordability platform, Jasmine Crockett</h4>
+                    <h4>Talarico on his affordability platform</h4>
                     <p>Face the Nation • 8:00</p>
                 </div>
             </a>
             <a href="https://www.youtube.com/watch?v=FHwmGdPE9HQ" target="_blank" class="yt-result glass-card"
-                style="text-decoration: none;">
-                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/FHwmGdPE9HQ/mqdefault.jpg" alt=""
-                    loading="lazy">
+                style="text-decoration: none;"><img class="yt-result-thumb"
+                    src="https://i.ytimg.com/vi/FHwmGdPE9HQ/mqdefault.jpg" alt="" loading="lazy">
                 <div class="yt-result-info">
-                    <h4>James Talarico Campaigns for U.S. Senate in Austin, Texas</h4>
+                    <h4>Talarico Campaigns for U.S. Senate in Austin, Texas</h4>
                     <p>C-SPAN • 21:46</p>
                 </div>
             </a>
             <a href="https://www.youtube.com/watch?v=qFQyMkvEKa0" target="_blank" class="yt-result glass-card"
-                style="text-decoration: none;">
-                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/qFQyMkvEKa0/mqdefault.jpg" alt=""
-                    loading="lazy">
+                style="text-decoration: none;"><img class="yt-result-thumb"
+                    src="https://i.ytimg.com/vi/qFQyMkvEKa0/mqdefault.jpg" alt="" loading="lazy">
                 <div class="yt-result-info">
-                    <h4>Steven Colbert interview with James Talarico draws national attention</h4>
+                    <h4>Colbert interview with Talarico draws national attention</h4>
                     <p>CBS TEXAS • 4:27</p>
                 </div>
             </a>
             <a href="https://www.youtube.com/watch?v=YRkonQkHXWI" target="_blank" class="yt-result glass-card"
-                style="text-decoration: none;">
-                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/YRkonQkHXWI/mqdefault.jpg" alt=""
-                    loading="lazy">
+                style="text-decoration: none;"><img class="yt-result-thumb"
+                    src="https://i.ytimg.com/vi/YRkonQkHXWI/mqdefault.jpg" alt="" loading="lazy">
                 <div class="yt-result-info">
                     <h4>New poll shows Talarico leading Crockett in Texas senate primary</h4>
                     <p>FOX 4 Dallas-Fort Worth • 2:47</p>
@@ -687,6 +991,180 @@
                     href="https://github.com/bedwards/god-mode" target="_blank">GitHub</a></p>
         </div>
     </footer>
+
+    <script>
+        // ─── NLM Artifact Data (downloaded from NotebookLM) ───
+        const REPORT_MD = `# Strategic Briefing: James Talarico's 2026 U.S. Senate Campaign
+
+## Executive Summary
+
+James Talarico, a current Texas House Representative for District 50 and former public school teacher, is a Democratic candidate for the U.S. Senate in the 2026 election cycle. Having announced his candidacy in September 2025, Talarico's campaign is built on a platform of economic equality, public education advocacy, and a direct challenge to Christian nationalism.
+
+As of early March 2026, Talarico holds a lead in the majority of major polls against his primary opponent, Representative Jasmine Crockett. His support is anchored by strong performance among Hispanic, white, and young voters, as well as a significant advantage in early voting. However, the race remains competitive, with specific polling showing results within the margin of error and a potential runoff scheduled for May 26, 2026, if no candidate secures more than 50% of the vote.
+
+---
+
+## Polling and Demographic Analysis
+
+The primary race, held on March 3, 2026, reflects a dynamic electorate. While Talarico holds the majority of the polling leads, the data suggests varying levels of certainty across different polling institutions.
+
+### Comparative Polling Data (2026)
+
+| Pollster | Date | Talarico | Crockett | Notes |
+| :--- | :--- | :--- | :--- | :--- |
+| **YouGov** | March 2, 2026 | 53% | 40% | Likely voters |
+| **Emerson College** | March 1, 2026 | 52% | 47% | Within margin of error |
+| **UT Texas Politics Project** | Late Feb 2026 | Behind | Lead | Outlier; double-digit lead for Crockett |
+| **Emerson College** | January 2026 | 47% | 38% | Previous standing |
+
+### Voter Demographics and Coalitions
+
+The candidate's path to victory relies on a diverse coalition, though there is a clear divide in support based on race and age.
+
+*   **Talarico Strongholds:**
+    *   **Hispanic Voters:** 59–60% support.
+    *   **White Voters:** 57–71% support.
+    *   **Young Voters (18–29):** 60% support.
+    *   **Early Voters:** 58% support (vs. Crockett's 41%).
+*   **Crockett Strongholds:**
+    *   **Black Voters:** 80–84% support.
+    *   **Seniors (65+):** Leading support within this age bracket.
+
+---
+
+## Key Campaign Themes and Policy Pillars
+
+Talarico's platform integrates traditional Democratic priorities with a focus on populist economic messaging and social confrontation.
+
+### Economic Equality
+The campaign emphasizes the "affordability platform," specifically targeting the rising costs of living for average Texans. Key areas include:
+*   **Housing and Childcare:** Proposals to lower costs for working families.
+*   **Prescription Drugs:** Advocacy for reduced pharmaceutical pricing.
+*   **Anti-Billionaire Messaging:** A core rhetorical strategy focused on wealth inequality and corporate influence.
+
+### Social and Institutional Advocacy
+*   **Public Education:** Leveraging his background as a former teacher, Talarico positions himself as a primary advocate for the public school system.
+*   **Confronting Christian Nationalism:** The candidate has made the opposition to Christian nationalism a central tenet of his social platform.
+
+---
+
+## Media Presence and Strategic Outreach
+
+*   **Digital Engagement:** A featured Jubilee video—Talarico vs. 20 undecided Texas voters—garnered over 1.6 million views.
+*   **National Media:**
+    *   **Face the Nation:** Interview on affordability platform.
+    *   **The Late Show with Stephen Colbert:** Canceled interview drew significant national attention.
+    *   **Forbes:** Coverage of 24-minute rally speech in San Antonio.
+*   **Live Coverage:** C-SPAN provided coverage of campaign events in Austin.
+
+---
+
+## Strategic Insights
+
+*   **The 50% Threshold:** Texas election law requires a candidate to secure more than 50% to win outright. Otherwise, runoff on May 26, 2026.
+*   **Early Voting Advantage:** Talarico's 17-point lead in early voting (58% to 41%) is a critical indicator.
+*   **Demographic Vulnerability:** His significant deficit among Black voters (80%+ for Crockett) and seniors represents a strategic hurdle.`;
+
+        const FLASHCARDS = [{ "front": "What is James Talarico's current role in the Texas state government?", "back": "He is the Texas House Representative for District 50." }, { "front": "James Talarico is running as a candidate for which federal office in the 2026 election?", "back": "The U.S. Senate." }, { "front": "What was James Talarico's profession prior to entering politics?", "back": "He was a public school teacher." }, { "front": "In what month and year did James Talarico announce his candidacy for the U.S. Senate?", "back": "September 2025." }, { "front": "Who is James Talarico's main opponent in the 2026 Democratic primary?", "back": "Rep. Jasmine Crockett." }, { "front": "On what date was the 2026 Texas primary election held?", "back": "March 3, 2026." }, { "front": "What percentage of the vote must a candidate receive to avoid a runoff election?", "back": "More than 50%." }, { "front": "According to the March 2 YouGov poll, what percentage of likely voters supported James Talarico?", "back": "53%." }, { "front": "What support percentage did Jasmine Crockett receive in the March 2 YouGov poll?", "back": "40%." }, { "front": "Which polling organization found the race within the margin of error on March 1, 2026?", "back": "Emerson College." }, { "front": "In the January 2026 Emerson College poll, what was James Talarico's support level?", "back": "47%." }, { "front": "Which organization published a late February 2026 poll considered to be an outlier?", "back": "UT Texas Politics Project." }, { "front": "James Talarico leads among Hispanic voters with a support range of ____", "back": "59-60%." }, { "front": "What is the range of support for James Talarico among white voters?", "back": "57-71%." }, { "front": "Which age group supports James Talarico at a rate of 60%?", "back": "Young voters aged 18-29." }, { "front": "What percentage of Black voters support Jasmine Crockett?", "back": "80-84%." }, { "front": "What percentage of early voters support James Talarico?", "back": "58%." }, { "front": "Talarico's economic platform focuses on lowering costs for housing, childcare, and ____", "back": "Prescription drugs." }, { "front": "Which religious-political movement does James Talarico explicitly confront?", "back": "Christian nationalism." }, { "front": "Which late-night talk show featured a canceled interview with Talarico that drew national attention?", "back": "The Late Show with Stephen Colbert." }, { "front": "Which media platform produced a video featuring Talarico vs. 20 undecided Texas voters?", "back": "Jubilee." }, { "front": "How many views has the Jubilee video featuring Talarico surpassed?", "back": "1.6 million views." }, { "front": "On which news program did James Talarico discuss his affordability platform?", "back": "Face the Nation." }, { "front": "Which network provided coverage of James Talarico's campaign event in Austin?", "back": "C-SPAN." }];
+
+        const MINDMAP = { "name": "James Talarico Senate Race 2026", "children": [{ "name": "Candidate Profile", "children": [{ "name": "Current Role: State Representative District 50" }, { "name": "Background: Former Public School Teacher" }, { "name": "Candidacy Announced: September 2025" }, { "name": "Main Opponent: Rep. Jasmine Crockett" }] }, { "name": "Polling Data", "children": [{ "name": "YouGov: 53% (Talarico)" }, { "name": "Emerson College: 52% (Talarico)" }, { "name": "UT Texas Politics Project: Crockett Lead (Outlier)" }, { "name": "Emerson (Jan 2026): 47% (Talarico)" }] }, { "name": "Voter Demographics", "children": [{ "name": "Talarico Support", "children": [{ "name": "Hispanic Voters (59-60%)" }, { "name": "White Voters (57-71%)" }, { "name": "Young Voters 18-29 (60%)" }, { "name": "Early Voters (58%)" }] }, { "name": "Crockett Support", "children": [{ "name": "Black Voters (80-84%)" }, { "name": "Voters 65+" }] }] }, { "name": "Key Issues", "children": [{ "name": "Economic Equality" }, { "name": "Lowering Housing & Childcare Costs" }, { "name": "Anti-Billionaire Messaging" }, { "name": "Confronting Christian Nationalism" }, { "name": "Public Education Advocacy" }] }, { "name": "Notable Events & Media", "children": [{ "name": "Jubilee Video (1.6M+ views)" }, { "name": "Face the Nation Interview" }, { "name": "Forbes Rally Coverage" }, { "name": "Canceled Stephen Colbert Interview" }, { "name": "C-SPAN Austin Event" }] }, { "name": "Election Timeline", "children": [{ "name": "Primary: March 3, 2026" }, { "name": "Runoff Threshold: 50%+" }, { "name": "Potential Runoff: May 26, 2026" }] }] };
+
+        // ─── Tab Switching ───
+        document.querySelectorAll('.artifact-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.artifact-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.artifact-panel').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // ─── Report Rendering (Markdown → HTML) ───
+        function renderMarkdown(md) {
+            let html = md
+                .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+                .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+                .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+                .replace(/^---$/gm, '<hr>')
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.+?)\*/g, '<em>$1</em>');
+            // Tables
+            html = html.replace(/\|(.+)\|\n\|[\s:-]+\|\n((?:\|.+\|\n?)+)/g, (match, header, body) => {
+                const ths = header.split('|').filter(s => s.trim()).map(s => `<th>${s.trim()}</th>`).join('');
+                const rows = body.trim().split('\n').map(row => {
+                    const tds = row.split('|').filter(s => s.trim()).map(s => `<td>${s.trim()}</td>`).join('');
+                    return `<tr>${tds}</tr>`;
+                }).join('');
+                return `<table><thead><tr>${ths}</tr></thead><tbody>${rows}</tbody></table>`;
+            });
+            // Lists
+            html = html.replace(/^(\s*)\*\s+(.+)$/gm, (m, indent, text) => {
+                return `<li style="margin-left:${indent.length * 10}px">${text}</li>`;
+            });
+            html = html.replace(/(<li[^>]*>.+<\/li>\n?)+/g, match => `<ul>${match}</ul>`);
+            // Paragraphs
+            html = html.split('\n\n').map(block => {
+                if (block.startsWith('<') || block.trim() === '') return block;
+                return `<p>${block.replace(/\n/g, ' ')}</p>`;
+            }).join('\n');
+            return html;
+        }
+        document.getElementById('reportContent').innerHTML = renderMarkdown(REPORT_MD);
+
+        // ─── Flashcards ───
+        let fcIndex = 0;
+        const fc = document.getElementById('flashcard');
+        const fcFront = document.getElementById('fcFront');
+        const fcBack = document.getElementById('fcBack');
+        const fcCounter = document.getElementById('fcCounter');
+
+        function showCard(i) {
+            fc.classList.remove('flipped');
+            fcIndex = ((i % FLASHCARDS.length) + FLASHCARDS.length) % FLASHCARDS.length;
+            setTimeout(() => {
+                fcFront.textContent = FLASHCARDS[fcIndex].front;
+                fcBack.textContent = FLASHCARDS[fcIndex].back;
+                fcCounter.textContent = `${fcIndex + 1} / ${FLASHCARDS.length}`;
+            }, fc.classList.contains('flipped') ? 300 : 0);
+        }
+        showCard(0);
+        fc.addEventListener('click', () => fc.classList.toggle('flipped'));
+        document.getElementById('fcPrev').addEventListener('click', () => showCard(fcIndex - 1));
+        document.getElementById('fcNext').addEventListener('click', () => showCard(fcIndex + 1));
+        document.addEventListener('keydown', e => {
+            if (document.getElementById('panel-flashcards').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') showCard(fcIndex - 1);
+                if (e.key === 'ArrowRight') showCard(fcIndex + 1);
+                if (e.key === ' ') { e.preventDefault(); fc.classList.toggle('flipped'); }
+            }
+        });
+
+        // ─── Mind Map ───
+        function renderMindMap(data) {
+            let html = `<div class="mm-root">${data.name}</div>`;
+            data.children.forEach(branch => {
+                html += `<div class="mm-branch">`;
+                html += `<div class="mm-branch-title" onclick="this.parentElement.classList.toggle('collapsed')"><span>${branch.name}</span><span class="arrow">▼</span></div>`;
+                html += `<div class="mm-leaves">`;
+                if (branch.children) {
+                    branch.children.forEach(leaf => {
+                        if (leaf.children) {
+                            html += `<div class="mm-subbranch"><div class="mm-subbranch-title">● ${leaf.name}</div>`;
+                            leaf.children.forEach(sub => {
+                                html += `<div class="mm-leaf">${sub.name}</div>`;
+                            });
+                            html += `</div>`;
+                        } else {
+                            html += `<div class="mm-leaf">${leaf.name}</div>`;
+                        }
+                    });
+                }
+                html += `</div></div>`;
+            });
+            return html;
+        }
+        document.getElementById('mindmapContainer').innerHTML = renderMindMap(MINDMAP);
+    </script>
 </body>
 
 </html>

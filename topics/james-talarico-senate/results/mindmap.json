@@ -1,0 +1,126 @@
+{
+  "name": "James Talarico Senate Race 2026",
+  "children": [
+    {
+      "name": "Candidate Profile",
+      "children": [
+        {
+          "name": "Current Role: State Representative District 50"
+        },
+        {
+          "name": "Background: Former Public School Teacher"
+        },
+        {
+          "name": "Candidacy Announced: September 2025"
+        },
+        {
+          "name": "Main Opponent: Rep. Jasmine Crockett"
+        }
+      ]
+    },
+    {
+      "name": "Polling Data",
+      "children": [
+        {
+          "name": "YouGov: 53% (Talarico)"
+        },
+        {
+          "name": "Emerson College: 52% (Talarico)"
+        },
+        {
+          "name": "UT Texas Politics Project: Crockett Lead (Outlier)"
+        },
+        {
+          "name": "Emerson (Jan 2026): 47% (Talarico)"
+        }
+      ]
+    },
+    {
+      "name": "Voter Demographics",
+      "children": [
+        {
+          "name": "Talarico Support",
+          "children": [
+            {
+              "name": "Hispanic Voters (59-60%)"
+            },
+            {
+              "name": "White Voters (57-71%)"
+            },
+            {
+              "name": "Young Voters 18-29 (60%)"
+            },
+            {
+              "name": "Early Voters (58%)"
+            }
+          ]
+        },
+        {
+          "name": "Crockett Support",
+          "children": [
+            {
+              "name": "Black Voters (80-84%)"
+            },
+            {
+              "name": "Voters 65+"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Key Issues",
+      "children": [
+        {
+          "name": "Economic Equality"
+        },
+        {
+          "name": "Lowering Housing & Childcare Costs"
+        },
+        {
+          "name": "Anti-Billionaire Messaging"
+        },
+        {
+          "name": "Confronting Christian Nationalism"
+        },
+        {
+          "name": "Public Education Advocacy"
+        }
+      ]
+    },
+    {
+      "name": "Notable Events & Media",
+      "children": [
+        {
+          "name": "Jubilee Video (1.6M+ views)"
+        },
+        {
+          "name": "Face the Nation Interview"
+        },
+        {
+          "name": "Forbes Rally Coverage"
+        },
+        {
+          "name": "Canceled Stephen Colbert Interview"
+        },
+        {
+          "name": "C-SPAN Austin Event"
+        }
+      ]
+    },
+    {
+      "name": "Election Timeline",
+      "children": [
+        {
+          "name": "Primary: March 3, 2026"
+        },
+        {
+          "name": "Runoff Threshold: 50%+"
+        },
+        {
+          "name": "Potential Runoff: May 26, 2026"
+        }
+      ]
+    }
+  ]
+}
