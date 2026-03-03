@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitwig Studio for Acoustic & Folk Music — God Mode</title>
+    <meta name="description"
+        content="Making polished acoustic, folk, folk rock, indie rock, and alt-country music in Bitwig Studio. Tips, plugins, FX, MIDI, AI tools, and NotebookLM artifacts.">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎸</text></svg>">
+    <style>
+        /* ─── Topic Sub-site Additions ─── */
+        .topic-hero {
+            padding-top: 120px;
+            padding-bottom: 40px;
+        }
+
+        .topic-hero-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .breadcrumb a {
+            color: var(--accent-2);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Artifact Tabs */
+        .artifact-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 24px;
+            padding: 4px;
+            background: var(--bg-glass);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-glass);
+        }
+
+        .artifact-tab {
+            padding: 10px 18px;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: none;
+            background: none;
+            font-family: var(--font-body);
+        }
+
+        .artifact-tab:hover {
+            color: var(--text-primary);
+            background: var(--bg-glass-hover);
+        }
+
+        .artifact-tab.active {
+            color: white;
+            background: var(--accent-1);
+        }
+
+        /* Artifact Content Panels */
+        .artifact-panel {
+            display: none;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        .artifact-panel.active {
+            display: block;
+        }
+
+        /* YouTube Results */
+        .yt-results {
+            display: grid;
+            gap: 12px;
+        }
+
+        .yt-result {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        .yt-result-thumb {
+            width: 160px;
+            height: 90px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-secondary);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .yt-result-info h4 {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .yt-result-info p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* Research Areas Grid */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .research-card {
+            padding: 24px;
+        }
+
+        .research-card-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .research-card h4 {
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .research-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* NLM Artifact Cards */
+        .nlm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .nlm-card {
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .nlm-card .nlm-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .nlm-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .nlm-card .nlm-status {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nlm-card .nlm-status.pending {
+            color: var(--accent-5);
+        }
+
+        .nlm-card .nlm-status.ready {
+            color: var(--accent-4);
+        }
+
+        /* Key Questions */
+        .questions-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .question-item {
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .question-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .question-text {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .yt-result {
+                flex-direction: column;
+            }
+
+            .yt-result-thumb {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16/9;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nlm-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-mesh"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <a href="../../" class="nav-logo">
+                <span class="icon">⚡</span>
+                <span>God Mode</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../../">Home</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#artifacts">Artifacts</a></li>
+                <li><a href="#videos">Videos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="topic-hero container">
+        <div class="breadcrumb">
+            <a href="../../">⚡ God Mode</a>
+            <span>›</span>
+            <span>Topics</span>
+            <span>›</span>
+            <span>Music Production</span>
+        </div>
+        <span class="topic-hero-icon">🎸</span>
+        <h1>Bitwig Studio for <span class="gradient-text">Acoustic & Folk</span> Music</h1>
+        <p class="hero-subtitle" style="text-align: left; margin-top: 16px;">
+            Making polished acoustic, folk, folk rock, indie rock, and alt-country music in Bitwig Studio — a DAW known
+            for ambient & EDM. Tips, tricks, plugins, FX, instruments, MIDI, AI tools, and more for professional
+            results.
+        </p>
+
+        <div class="tags-bar" style="justify-content: flex-start; margin-top: 24px;">
+            <span class="tag active">music</span>
+            <span class="tag">bitwig</span>
+            <span class="tag">production</span>
+            <span class="tag">folk</span>
+            <span class="tag">indie-rock</span>
+            <span class="tag">plugins</span>
+            <span class="tag">midi</span>
+            <span class="tag">ai</span>
+        </div>
+    </section>
+
+    <!-- Research Areas -->
+    <section class="section container" id="research">
+        <h2 style="margin-bottom: 8px;">Research Areas</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 32px;">Deep-dive topics for making acoustic music in
+            Bitwig</p>
+        <div class="research-grid">
+            <div class="research-card glass-card">
+                <div class="research-card-icon">🎹</div>
+                <h4>Plugins & Instruments</h4>
+                <p>Acoustic guitar VSTs, piano, strings, banjo, mandolin, pedal steel emulations</p>
+            </div>
+            <div class="research-card glass-card">
+                <div class="research-card-icon">🎛️</div>
+                <h4>FX & Processing</h4>
+                <p>Analog warmth, tape saturation, room reverbs, compression for live feel</p>
+            </div>
+            <div class="research-card glass-card">
+                <div class="research-card-icon">🎵</div>
+                <h4>MIDI & Performance</h4>
+                <p>Humanization, velocity curves, strumming patterns, realistic articulations</p>
+            </div>
+            <div class="research-card glass-card">
+                <div class="research-card-icon">🤖</div>
+                <h4>AI Tools</h4>
+                <p>AI-assisted composition, arrangement, and mixing for acoustic genres</p>
+            </div>
+            <div class="research-card glass-card">
+                <div class="research-card-icon">🎼</div>
+                <h4>ABC Format & Notation</h4>
+                <p>Musical notation interchange, lead sheet generation, ABC to MIDI</p>
+            </div>
+            <div class="research-card glass-card">
+                <div class="research-card-icon">🔊</div>
+                <h4>Mixing & Mastering</h4>
+                <p>Folk/indie mixing conventions, stereo imaging, dynamics, analog color</p>
+            </div>
+            <div class="research-card glass-card">
+                <div class="research-card-icon">🌊</div>
+                <h4>Sound Design</h4>
+                <p>Organic textures, ambient pads from acoustic sources, The Grid for natural sounds</p>
+            </div>
+            <div class="research-card glass-card">
+                <div class="research-card-icon">🎯</div>
+                <h4>Bitwig-Specific</h4>
+                <p>The Grid for organic sounds, modulator tricks, Poly Grid as instrument, workflow tips</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Questions -->
+    <section class="section container">
+        <h2 style="margin-bottom: 32px;">Key Questions</h2>
+        <div class="questions-list">
+            <div class="question-item glass-card">
+                <div class="question-num">1</div>
+                <div class="question-text">What plugins best emulate acoustic instruments in Bitwig?</div>
+            </div>
+            <div class="question-item glass-card">
+                <div class="question-num">2</div>
+                <div class="question-text">How to get the "live room" feel vs the typical EDM sterile sound?</div>
+            </div>
+            <div class="question-item glass-card">
+                <div class="question-num">3</div>
+                <div class="question-text">Best FX chains for folk/indie vocal processing?</div>
+            </div>
+            <div class="question-item glass-card">
+                <div class="question-num">4</div>
+                <div class="question-text">How to use The Grid for organic, non-electronic textures?</div>
+            </div>
+            <div class="question-item glass-card">
+                <div class="question-num">5</div>
+                <div class="question-text">Bitwig vs other DAWs — what workflow adaptations are needed for acoustic
+                    genres?</div>
+            </div>
+            <div class="question-item glass-card">
+                <div class="question-num">6</div>
+                <div class="question-text">What AI tools best complement acoustic music production in 2026?</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NotebookLM Artifacts -->
+    <section class="section container" id="artifacts">
+        <h2 style="margin-bottom: 8px;">NotebookLM Artifacts</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 32px;">AI-generated learning materials — 9 artifact types
+            planned</p>
+        <div class="nlm-grid">
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">🎙️</div>
+                <h4>Audio Overview</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">🎬</div>
+                <h4>Video Overview</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">🧠</div>
+                <h4>Mind Map</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">📝</div>
+                <h4>Report</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">🃏</div>
+                <h4>Flashcards</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">❓</div>
+                <h4>Quiz</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">📊</div>
+                <h4>Infographic</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">📑</div>
+                <h4>Slide Deck</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+            <div class="nlm-card glass-card">
+                <div class="nlm-icon">📋</div>
+                <h4>Data Table</h4>
+                <div class="nlm-status pending">Pending Auth</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Research Videos -->
+    <section class="section container" id="videos">
+        <h2 style="margin-bottom: 8px;">YouTube Research</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 32px;">Curated videos discovered via yt-dlp search</p>
+        <div class="yt-results" id="yt-results">
+            <a href="https://www.youtube.com/watch?v=k0N8Sbso6gM" target="_blank" class="yt-result glass-card"
+                style="text-decoration: none;">
+                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/k0N8Sbso6gM/mqdefault.jpg"
+                    alt="Mastering for Folk Music" loading="lazy">
+                <div class="yt-result-info">
+                    <h4>Mastering for Folk Music</h4>
+                    <p>Sage Audio • 10:32</p>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=pOdk7UytHB4" target="_blank" class="yt-result glass-card"
+                style="text-decoration: none;">
+                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/pOdk7UytHB4/mqdefault.jpg"
+                    alt="Vocal Mixing Course" loading="lazy">
+                <div class="yt-result-info">
+                    <h4>THE world's shortest vocal mixing course you'll ever need</h4>
+                    <p>Andrew Barr • 2:29</p>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=PQxJ5yCtuXE" target="_blank" class="yt-result glass-card"
+                style="text-decoration: none;">
+                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/PQxJ5yCtuXE/mqdefault.jpg" alt="DAW Comparison"
+                    loading="lazy">
+                <div class="yt-result-info">
+                    <h4>I produced the same song in 10 DAWs to find the best one</h4>
+                    <p>14:20</p>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=GnZfMF0tTvM" target="_blank" class="yt-result glass-card"
+                style="text-decoration: none;">
+                <img class="yt-result-thumb" src="https://i.ytimg.com/vi/GnZfMF0tTvM/mqdefault.jpg"
+                    alt="Audio Fundamentals" loading="lazy">
+                <div class="yt-result-info">
+                    <h4>Help Support the Audio Fundamentals Course</h4>
+                    <p>Matt Mayfield Music • 2:15</p>
+                </div>
+            </a>
+        </div>
+        <p style="color: var(--text-muted); margin-top: 24px; font-size: 0.85rem; text-align: center;">
+            🔍 More videos will be added as research continues. Found via: <code
+                style="color: var(--accent-2);">yt-dlp "ytsearch:Bitwig acoustic folk" --flat-playlist</code>
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                <a href="../../">⚡ God Mode</a> •
+                Bitwig Studio for Acoustic & Folk Music •
+                <a href="https://github.com/bedwards/god-mode" target="_blank">GitHub</a>
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>

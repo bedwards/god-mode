@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>God Mode — AI Research Hub</title>
+  <meta name="description" content="AI-powered research hub with YouTube search, NotebookLM automation, and interactive learning experiences across multiple topics.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <a href="./" class="nav-logo">
+        <span class="icon">⚡</span>
+        <span>God Mode</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#topics">Topics</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="https://github.com/bedwards/god-mode" target="_blank">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero container">
+    <div class="hero-badge">
+      <span>⚡</span> AI-Powered Research
+    </div>
+    <h1>
+      Research at <span class="gradient-text">God Mode</span>
+    </h1>
+    <p class="hero-subtitle">
+      Deep-dive research across topics powered by YouTube search, Google NotebookLM, and AI-generated artifacts. Interactive learning experiences that go beyond reading.
+    </p>
+
+    <!-- Search -->
+    <div class="search-bar">
+      <div class="search-input-wrap">
+        <span class="icon">🔍</span>
+        <input type="text" id="search-input" class="search-input" placeholder="Search topics, tags, or keywords...  ( / )" autocomplete="off">
+      </div>
+    </div>
+
+    <!-- Tags -->
+    <div class="tags-bar" id="tags-bar"></div>
+
+    <!-- Stats -->
+    <div class="stats-bar" id="stats-bar"></div>
+  </section>
+
+  <!-- Topics Grid -->
+  <section class="section container" id="topics">
+    <div class="topics-grid" id="topics-grid"></div>
+  </section>
+
+  <!-- Tools Section -->
+  <section class="section container" id="tools">
+    <h2 style="text-align: center; margin-bottom: 8px;">Powered By</h2>
+    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 40px;">The tools behind the research</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+      <div class="glass-card" style="padding: 24px; text-align: center;">
+        <div style="font-size: 2rem; margin-bottom: 12px;">📺</div>
+        <h3 style="font-size: 1rem; margin-bottom: 4px;">yt-dlp</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">YouTube search in 1.5s</p>
+      </div>
+      <div class="glass-card" style="padding: 24px; text-align: center;">
+        <div style="font-size: 2rem; margin-bottom: 12px;">📓</div>
+        <h3 style="font-size: 1rem; margin-bottom: 4px;">NotebookLM</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">9 artifact types via CLI</p>
+      </div>
+      <div class="glass-card" style="padding: 24px; text-align: center;">
+        <div style="font-size: 2rem; margin-bottom: 12px;">🤖</div>
+        <h3 style="font-size: 1rem; margin-bottom: 4px;">Gemini AI</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Research & generation</p>
+      </div>
+      <div class="glass-card" style="padding: 24px; text-align: center;">
+        <div style="font-size: 2rem; margin-bottom: 12px;">⚡</div>
+        <h3 style="font-size: 1rem; margin-bottom: 4px;">Antigravity IDE</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Agent-powered workflow</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Built with ⚡ by <a href="https://github.com/bedwards">bedwards</a> • Powered by AI</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
